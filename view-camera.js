@@ -35,6 +35,7 @@ document.addEventListener('readystatechange', (event) => {
 		}
 
 	video.addEventListener('tap',event => {
+		alert('tap');
 		faceMode = faceMode === 'user' ? 'environment' : 'user';
 		video.applyConstraints({
 			audio: false,
