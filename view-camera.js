@@ -34,13 +34,14 @@ document.addEventListener('readystatechange', (event) => {
 		  elem.webkitRequestFullscreen();
 		}
 
-	let time = 0;
 	video.addEventListener('tap',event => {
 		faceMode = faceMode === 'user' ? 'environment' : 'user';
 		video.applyConstraints({
 			audio: false,
 			video: {
-             			facingMode: faceMode
+             			facingMode: {
+					exact: faceMode
+				}
          		}
 		});
 	});
