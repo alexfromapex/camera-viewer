@@ -1,11 +1,11 @@
 document.addEventListener('readystatechange', (event) => {
 
 	if(document.readyState === 'complete') {
-
-		const constraints = {
+		let faceMode = 'user';
+		let constraints = {
 			audio: false,
 			video: {
-             			facingMode: 'user'
+             			facingMode: faceMode
          		}
 		};
 		const video = document.querySelector("video");
@@ -33,6 +33,21 @@ document.addEventListener('readystatechange', (event) => {
 		} else if (elem.webkitRequestFullscreen) {
 		  elem.webkitRequestFullscreen();
 		}
+
+	let time = 0;
+	video.addEventListener('dblclick',event => {
+		if(faceMode == 'user')
+			faceMode = 'environment';
+		else
+			faceMode = 'user';
+
+		video.applyConstraints({
+			audio: false,
+			video: {
+             			facingMode: faceMode
+         		}
+		});
+	});
 
 	}
 
