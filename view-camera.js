@@ -2,7 +2,12 @@ document.addEventListener('readystatechange', (event) => {
 
 	if(document.readyState === 'complete') {
 
-		const constraints = {audio: false, video: true};
+		const constraints = {
+			audio: false,
+			video: {
+             			facingMode: 'user'
+         		}
+		};
 		const video = document.querySelector("video");
 		
 		function successCallback(stream) {
