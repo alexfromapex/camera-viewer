@@ -34,8 +34,7 @@ document.addEventListener('readystatechange', (event) => {
 		  elem.webkitRequestFullscreen();
 		}
 
-	video.addEventListener('tap',event => {
-		alert('tap');
+	video.addEventListener('click',event => {
 		faceMode = faceMode === 'user' ? 'environment' : 'user';
 		video.applyConstraints({
 			audio: false,
