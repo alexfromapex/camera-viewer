@@ -1,6 +1,7 @@
 document.addEventListener('readystatechange', (event) => {
 
 	if(document.readyState === 'complete') {
+		let currentStream = null;
 		let faceMode = 'user';
 		let constraints = {
 			audio: false,
@@ -11,6 +12,7 @@ document.addEventListener('readystatechange', (event) => {
 		const video = document.querySelector("video");
 		
 		function successCallback(stream) {
+		  currentStream = stream;
 		  video.srcObject = stream;
 		  video.play();
 		}
@@ -22,29 +24,22 @@ document.addEventListener('readystatechange', (event) => {
 		navigator.mediaDevices.getUserMedia(constraints)
 		  .then(successCallback)
 		  .catch(errorCallback);
-		  
-		  var elem = document.querySelector("video");
-		if (elem.requestFullscreen) {
-		  elem.requestFullscreen();
-		} else if (elem.msRequestFullscreen) {
-		  elem.msRequestFullscreen();
-		} else if (elem.mozRequestFullScreen) {
-		  elem.mozRequestFullScreen();
-		} else if (elem.webkitRequestFullscreen) {
-		  elem.webkitRequestFullscreen();
-		}
 
-	video.addEventListener('click',event => {
-		faceMode = faceMode === 'user' ? 'environment' : 'user';
-		video.applyConstraints({
-			audio: false,
-			video: {
-             			facingMode: {
-					exact: faceMode
-				}
-         		}
+		video.addEventListener('click',event => {
+			currentStream.getTracks().forEach(track => {
+				track.stop();
+			});
+			faceMode = faceMode === 'user' ? 'environment' : 'user';
+			video.applyConstraints({
+				audio: false,
+				video: {
+        	     			facingMode: {
+						exact: faceMode
+					}
+        	 		}
+			});
+			video.play();
 		});
-	});
 
 	}
 
