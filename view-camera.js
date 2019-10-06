@@ -35,12 +35,8 @@ document.addEventListener('readystatechange', (event) => {
 		}
 
 	let time = 0;
-	video.addEventListener('dblclick',event => {
-		if(faceMode == 'user')
-			faceMode = 'environment';
-		else
-			faceMode = 'user';
-
+	video.addEventListener('tap',event => {
+		faceMode = faceMode === 'user' ? 'environment' : 'user';
 		video.applyConstraints({
 			audio: false,
 			video: {
