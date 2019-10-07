@@ -31,6 +31,8 @@ document.addEventListener('readystatechange', (event) => {
 
 		video.addEventListener('click',event => {
 			if(navigator.mediaDevices || navigator.mediaDevices.enumerateDevices) {
+				video.pause();
+				video.srcObject = null;
 				currentStream.getTracks().forEach(track => {
 					track.stop();
 				});
@@ -42,6 +44,7 @@ document.addEventListener('readystatechange', (event) => {
 						}
         	 			}
 				});
+				video.srcObject = currentStream;
 				video.play();
 			}
 		});
