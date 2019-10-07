@@ -50,6 +50,8 @@ document.addEventListener('readystatechange', (event) => {
 		        })
 		}
 
+		alert(cameras);
+
 		video.addEventListener('click',event => {
 			if(cameras.length > 1) {
 				if(camId + 1 < cameras.length) {
