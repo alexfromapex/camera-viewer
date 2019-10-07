@@ -1,14 +1,18 @@
 document.addEventListener('readystatechange', (event) => {
 
 	if(document.readyState === 'complete') {
+		let camId = 0;
 		let currentStream = null;
 		let faceMode = 'user';
 		let constraints = {
 			audio: false,
 			video: {
-             			facingMode: faceMode
+             			deviceId: {
+					exact: cameras[camId]	
+				}
          		}
 		};
+		
 		const video = document.querySelector("video");
 		
 		function successCallback(stream) {
@@ -26,19 +30,20 @@ document.addEventListener('readystatechange', (event) => {
 		  .catch(errorCallback);
 
 		video.addEventListener('click',event => {
-			currentStream.getTracks().forEach(track => {
-				track.stop();
-			});
-			faceMode = faceMode === 'user' ? 'environment' : 'user';
-			video.applyConstraints({
-				audio: false,
-				video: {
-        	     			facingMode: {
-						exact: faceMode
-					}
-        	 		}
-			});
-			video.play();
+			if(navigator.mediaDevices || navigator.mediaDevices.enumerateDevices) {
+				currentStream.getTracks().forEach(track => {
+					track.stop();
+				});
+				currentStream = navigator.mediaDevices.getUserMedia({
+					audio: false,
+					video: {
+        	     				deviceId: {
+							exact: cameras[camId]
+						}
+        	 			}
+				});
+				video.play();
+			}
 		});
 
 	}
