@@ -23,7 +23,7 @@ document.addEventListener('readystatechange', (event) => {
 		}
 		
 		function errorCallback(error) {
-		  console.log("navigator.getUserMedia error: ", error);
+			window.alert("Error: ", error);
 		}
 		
 		navigator.mediaDevices.getUserMedia(constraints)
