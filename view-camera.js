@@ -30,6 +30,26 @@ document.addEventListener('readystatechange', (event) => {
 		  .then(successCallback)
 		  .catch(errorCallback);
 
+		if('enumerateDevices' in navigator) {
+			if(navigator.mediaDevices.enumerateDevices) {
+				navigator.mediaDevices.enumerateDevices().then(() => {
+		            mediaDevices.forEach(mediaDevice => {
+		                if (mediaDevice.kind === 'videoinput') {
+		                    cameras = cameras.concat(mediaDevice.deviceId);
+		                }
+		            })
+		        })
+		    }
+		} else if('mediaDevices' in navigator && 'enumerateDevices' in navigator.mediaDevices) {
+				navigator.mediaDevices.enumerateDevices().then(mediaDevices => {
+					mediaDevices.forEach(mediaDevice => {
+		                if (mediaDevice.kind === 'videoinput') {
+		                    cameras = cameras.concat(mediaDevice.deviceId);
+		                }
+		       		})
+		        })
+		}
+
 		video.addEventListener('click',event => {
 			if(cameras.length > 1) {
 				if(camId + 1 < cameras.length) {
