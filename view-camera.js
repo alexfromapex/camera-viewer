@@ -58,7 +58,9 @@ document.addEventListener('readystatechange', (event) => {
 			}
 			if(cameras.length > 1) {
 				if(navigator.mediaDevices || navigator.mediaDevices.enumerateDevices) {
-					video.pause();
+					currentStream.getTracks().forEach(track => {
+						track.stop();
+  					});
 					video.srcObject = null;
 					currentStream = navigator.mediaDevices.getUserMedia({
 						audio: false,
@@ -67,9 +69,7 @@ document.addEventListener('readystatechange', (event) => {
 								exact: cameras[camId]
 							}
         	 				}
-					});
-					video.srcObject = currentStream;
-					video.play();
+					}).then(successCallback).catch(errorCallback);
 				}
 			}
 		});
