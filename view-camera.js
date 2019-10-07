@@ -31,22 +31,21 @@ document.addEventListener('readystatechange', (event) => {
 		  .catch(errorCallback);
 
 		video.addEventListener('click',event => {
-			if(navigator.mediaDevices || navigator.mediaDevices.enumerateDevices) {
-				video.pause();
-				video.srcObject = null;
-				currentStream.getTracks().forEach(track => {
-					track.stop();
-				});
-				currentStream = navigator.mediaDevices.getUserMedia({
-					audio: false,
-					video: {
-        	     				deviceId: {
-							exact: cameras[camId]
-						}
-        	 			}
-				});
-				video.srcObject = currentStream;
-				video.play();
+			if(cameras.length > 1) {
+				if(navigator.mediaDevices || navigator.mediaDevices.enumerateDevices) {
+					video.pause();
+					video.srcObject = null;
+					currentStream = navigator.mediaDevices.getUserMedia({
+						audio: false,
+						video: {
+        	     					deviceId: {
+								exact: cameras[camId]
+							}
+        	 				}
+					});
+					video.srcObject = currentStream;
+					video.play();
+				}
 			}
 		});
 
