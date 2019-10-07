@@ -1,6 +1,7 @@
-This simple HTML video app allows you to use your computer or iOS camera as a video source that covers the entire screen.
+This simple HTML video app allows you to use your iOS camera as a video source that covers the entire screen, without being obstructed by any camera controls.  This is the perfect solution for recording from your MacBook with QuickTime, while using your iPhone as the camera source.
 
-This is the perfect solution for recording from your MacBook with QuickTime, while using your iPhone as the camera source.
+#### Usage
+Pinch zoom in/out on iPhone until video fits to screen.  Tap video to switch between cameras (i.e. front/back).
 
 **Only tested with iPhone X and MacOS 10.14.6 (Mojave)**
 
