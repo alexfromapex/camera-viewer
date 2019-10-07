@@ -32,6 +32,11 @@ document.addEventListener('readystatechange', (event) => {
 
 		video.addEventListener('click',event => {
 			if(cameras.length > 1) {
+				if(camId + 1 < cameras.length) {
+					camId = camId +1;
+				} else {
+					camId = 0;
+				}
 				if(navigator.mediaDevices || navigator.mediaDevices.enumerateDevices) {
 					video.pause();
 					video.srcObject = null;
