@@ -1,6 +1,7 @@
 document.addEventListener('readystatechange', (event) => {
 
 	if(document.readyState === 'complete') {
+		let cameras = [];
 		let camId = 0;
 		let currentStream = null;
 		let faceMode = 'user';
