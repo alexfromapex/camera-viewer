@@ -62,7 +62,7 @@ document.addEventListener('readystatechange', (event) => {
 						track.stop();
   					});
 					video.srcObject = null;
-					currentStream = navigator.mediaDevices.getUserMedia({
+					navigator.mediaDevices.getUserMedia({
 						audio: false,
 						video: {
         	     					deviceId: {
