@@ -41,23 +41,22 @@ document.addEventListener('readystatechange', (event) => {
 		        })
 		    }
 		} else if('mediaDevices' in navigator && 'enumerateDevices' in navigator.mediaDevices) {
-				navigator.mediaDevices.enumerateDevices().then(mediaDevices => {
-					mediaDevices.forEach(mediaDevice => {
-		                if (mediaDevice.kind === 'videoinput') {
-		                    cameras = cameras.concat(mediaDevice.deviceId);
-		                }
+			navigator.mediaDevices.enumerateDevices().then(mediaDevices => {
+				mediaDevices.forEach(mediaDevice => {
+		                	if (mediaDevice.kind === 'videoinput') {
+						cameras = cameras.concat(mediaDevice.deviceId);
+		                	}
 		       		})
 		        })
 		}
 
 		video.addEventListener('click',event => {
-			alert(cameras);
+			if((camId + 1) < cameras.length) {
+				camId = camId +1;
+			} else {
+				camId = 0;
+			}
 			if(cameras.length > 1) {
-				if(camId + 1 < cameras.length) {
-					camId = camId +1;
-				} else {
-					camId = 0;
-				}
 				if(navigator.mediaDevices || navigator.mediaDevices.enumerateDevices) {
 					video.pause();
 					video.srcObject = null;
