@@ -26,8 +26,8 @@ document.addEventListener('readystatechange', (event) => {
 		  .catch(errorCallback);
 
 		if('enumerateDevices' in navigator) {
-			if(navigator.mediaDevices.enumerateDevices) {
-				navigator.mediaDevices.enumerateDevices().then(media_devices => {
+			if(navigator.mediaDevices.getUserMedia) {
+				navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then(media_devices => {
 					media_devices.forEach(media_device => {
 				    if (media_device.kind === 'videoinput') {
 					   	cameras = cameras.concat(media_device.id);
@@ -35,14 +35,6 @@ document.addEventListener('readystatechange', (event) => {
 					})
 		    })
 		  }
-		} else if('mediaDevices' in navigator && 'enumerateDevices' in navigator.mediaDevices) {
-			navigator.mediaDevices.enumerateDevices().then(media_devices => {
-				media_devices.forEach(media_device => {
-					if (media_device.kind === 'videoinput') {
-						cameras = cameras.concat(media_device.id);
-					}
-     		})
-		  })
 		}
 
 		video.addEventListener('dblclick',event => {
