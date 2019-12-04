@@ -12,6 +12,9 @@ document.addEventListener('readystatechange', (event) => {
 		  currentStream = stream;
 		  video.srcObject = stream;
 		  video.play();
+			if(location.href.includes('&debug')) {
+				console.log(`stream: ${stream}`);
+			}
 		}
 
 		function errorCallback(error) {
@@ -47,6 +50,7 @@ document.addEventListener('readystatechange', (event) => {
 				console.log('clicked on video');
 				console.log(cameras);
 				console.log(camId);
+				console.log(currentStream);
 			}
 			if((camId + 1) < cameras.length) {
 				camId = camId +1;
