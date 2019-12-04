@@ -4,7 +4,6 @@ document.addEventListener('readystatechange', (event) => {
 		let cameras = [];
 		let camId = 0;
 		let currentStream = null;
-		let faceMode = 'user';
 		let constraints = {
 			audio: false,
 			video: {
@@ -14,7 +13,7 @@ document.addEventListener('readystatechange', (event) => {
 				}
 		};
 
-		const video = document.querySelector("video");
+		const video = document.querySelector('video');
 
 		function successCallback(stream) {
 		  currentStream = stream;
@@ -23,7 +22,7 @@ document.addEventListener('readystatechange', (event) => {
 		}
 
 		function errorCallback(error) {
-			window.alert("Error: ", error);
+			window.alert('Error: ', error);
 		}
 
 		navigator.mediaDevices.getUserMedia(constraints)
@@ -50,9 +49,11 @@ document.addEventListener('readystatechange', (event) => {
 		  })
 		}
 
-		video.addEventListener('click',event => {
+		video.addEventListener('dblclick',event => {
 			if(location.href.includes('&debug')) {
 				console.log('clicked on video');
+				console.log(cameras);
+				console.log(camId);
 			}
 			if((camId + 1) < cameras.length) {
 				camId = camId +1;
