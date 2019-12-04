@@ -27,7 +27,7 @@ document.addEventListener('readystatechange', (event) => {
 				navigator.mediaDevices.enumerateDevices().then(media_devices => {
 					media_devices.forEach(media_device => {
 				    if (media_device.kind === 'videoinput') {
-					   	cameras = cameras.concat(media_device.deviceId);
+					   	cameras = cameras.concat(media_device.id);
 						}
 					})
 		    })
@@ -36,7 +36,7 @@ document.addEventListener('readystatechange', (event) => {
 			navigator.mediaDevices.enumerateDevices().then(media_devices => {
 				media_devices.forEach(media_device => {
 					if (media_device.kind === 'videoinput') {
-						cameras = cameras.concat(media_device.deviceId);
+						cameras = cameras.concat(media_device.id);
 					}
      		})
 		  })
