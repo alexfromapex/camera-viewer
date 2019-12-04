@@ -51,6 +51,9 @@ document.addEventListener('readystatechange', (event) => {
 		}
 
 		video.addEventListener('click',event => {
+			if(location.href.includes('&debug')) {
+				console.log('clicked on video');
+			}
 			if((camId + 1) < cameras.length) {
 				camId = camId +1;
 			} else {
