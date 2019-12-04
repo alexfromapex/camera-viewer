@@ -1,17 +1,10 @@
+let cameras = [];
+let camId = 0;
+let currentStream = null;
+
 document.addEventListener('readystatechange', (event) => {
 
 	if(document.readyState === 'complete') {
-		let cameras = [];
-		let camId = 0;
-		let currentStream = null;
-		let constraints = {
-			audio: false,
-			video: {
-					deviceId: {
-						exact: cameras[camId]
-					}
-				}
-		};
 
 		const video = document.querySelector('video');
 
@@ -25,7 +18,7 @@ document.addEventListener('readystatechange', (event) => {
 			window.alert('Error: ', error);
 		}
 
-		navigator.mediaDevices.getUserMedia(constraints)
+		navigator.mediaDevices.getUserMedia({ audio: false, video: true })
 		  .then(successCallback)
 		  .catch(errorCallback);
 
