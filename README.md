@@ -1,11 +1,13 @@
 Fork of [alexfromapex's](https://github.com/alexfromapex/camera-viewer) repository.
 
-This simple HTML video app allows you to use your iOS camera as a video source that covers the entire screen, without being obstructed by any camera controls.  This is the perfect solution for recording from your MacBook with QuickTime, while using your iPhone as the camera source.
+This simple HTML video app allows you to use your iOS camera as a video source that covers the entire screen, without being obstructed by any camera controls.  This is the perfect solution for recording from your MacBook with QuickTime, while using your iPhone as the camera source. Conveniently, it works completely as a static website and is also a PWA which can be added to an iOS' home screen device, therefore able to run without an internet connection.
 
 #### Usage
-Go to this address on your iOS Device: https://trevcan.github.io/camera-viewer/
+1. Go to this web address on your iOS Device: https://trevcan.github.io/camera-viewer/
+2. Pinch zoom in/out on iPhone until video fits to screen.  tap fast on the video to switch between cameras (i.e. front/back).
 
-Pinch zoom in/out on iPhone until video fits to screen.  Double tap on the video to switch between cameras (i.e. front/back).
+## Suggested usage
+- this web app may be useful when using it as a virtual camera, e.g. with [RPiPlay](https://github.com/FD-/RPiPlay) in other words, allowing you to transmitt your _raw-camera_ from your iOS Device to your computer/PC, raspberry and use it as a virtual camera with [OBS](https://obsproject.com/). 
 
 **Tested with:**
 - iPhone 6S (iOS 14.3)
